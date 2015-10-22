@@ -18,7 +18,7 @@ $(function(){
 		color = 'white';
 	});
 	$('#rand').on('click', function(){
-		color= '#'+Math.floor(Math.random()*16777215).toString(16);
+		color= '#'+Math.floor(Math.random()*16777216).toString(16);
 		$('#rand span').css('background-color', color);
 	});
 
@@ -36,6 +36,21 @@ $(function(){
 	$('#reset').on('click', function() {
 		$('.box').removeClass(colors);
 		$('.box').css('background-color', '');
+	});
+
+
+	var isPressed = false;
+	$('.box').on('mousedown', function(){
+		isPressed = true;
+	});
+	$('.box').on('mouseup', function(){
+		isPressed = false;
+	});
+	$('.box').on('mouseenter', function(){
+		if(isPressed){
+			$(this).addClass(color);
+			$(this).css('background-color', color);
+		}
 	});
 	
 
